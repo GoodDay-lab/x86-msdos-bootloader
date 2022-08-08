@@ -8,7 +8,7 @@
 .text
 _start:
 	welcome: .asciz "Hello world!\r\n\0"
-
+	
 	xor %dx, %dx	
 
 .writeStringIn:
@@ -22,6 +22,7 @@ _start:
 .writeStringOut:
 
 exit:
+		int $0x18
 		. = _start + 510
 		.byte 0x55
 		.byte 0xaa
