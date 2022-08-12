@@ -4,5 +4,5 @@ test.bin: test.S
 	dd if=test.bin of=simplebootld.img
 
 clean:
-	rm *.bin
-	rm *.o
+	rm *.bin -f
+	rm *.o -f
