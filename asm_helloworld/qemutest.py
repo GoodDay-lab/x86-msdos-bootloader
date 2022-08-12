@@ -14,7 +14,9 @@ def run_qemu(qemu, order, *drives):
     print("Booting!")
     os.system(cmdline)
 
-fdrive = "./simplebootld.img"
+import sys
+
+fdrive = sys.argv[1]
 qemu = "/bin/qemu-system-x86_64"
 bootorder = "ca"
 
