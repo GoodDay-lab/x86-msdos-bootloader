@@ -1,6 +1,6 @@
 DRIVE ?= drive.img
 FNAME = test.bin
-SOURCE = code.o stdio.o
+SOURCE = code.o stdio.o draw.o
 PYSCRIPT ?= qemutest.py
 CFLAGS ?= -c -g -Os -ffreestanding -Wall -m16 -fno-pie -nostdlib -nostdinc
 LDFLAGS ?=  -T script.ld -static -nmagic -nostdlib -s -L.

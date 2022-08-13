@@ -1,3 +1,8 @@
+## BIOS graphics!
+
+	I readed this http://un.uobasrah.edu.iq/lectures/8108.pdf. 
+	There's some info about graphic in BIOS and how to draw pixels using bios interrupts.
+
 ## Issue
 
 No issue! I did it!
@@ -5,7 +10,8 @@ No issue! I did it!
 ## Soultion
 
 	I used objdump to check a sections order and seen that .text (funtion) start before entry point (main)
-so I just changed script ld. *.text.sturtup* is entry point, *.text* some functions. That's really cool! I understood a little in linking and assembling!
+	so I just changed script ld. *.text.sturtup* is entry point, *.text* some functions. 
+	That's really cool! I understood a little in linking and assembling!
 
 ## HOW it works (my mind):
 
