@@ -1,12 +1,20 @@
 DRIVE ?= drive.img
 FNAME = test.bin
-SOURCE = code.o stdio.o draw.o
+SOURCE = main.o stdio.o logo.o
 PYSCRIPT ?= qemutest.py
 CFLAGS ?= -c -g -Os -ffreestanding -Wall -m16 -fno-pie -nostdlib -nostdinc
 LDFLAGS ?=  -T script.ld -static -nmagic -nostdlib -s -L.
-
 OBJCOPY ?= objcopy
 OBJCOPYFLAGS ?= -O binary
+
+##########################################
+# Sources to build different bootloaders
+# (just uncomment them) and 'make build'
+##########################################
+# To build with graphic:
+#SOURCE = code.o stdio.o draw.o
+# To build with logo:
+#SOURCE = main.o stdio.o logo.o
 
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ $<
