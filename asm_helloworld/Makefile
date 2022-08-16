@@ -1,5 +1,6 @@
 DRIVE ?= drive.img
-FNAME ?= hello_world
+FNAME ?= test.bin
+SOURCE ?= read_drive.o
 TESTSCRIPT ?= qemutest.py
 
 $(DRIVE):
@@ -8,10 +9,10 @@ $(DRIVE):
 %.o: %.S
 	$(AS) -o $@ $<
 
-%.bin: %.o
+%.bin: $(SOURCE)
 	$(LD) -Ttext 0x7c00 --oformat=binary -o $@ $<
 
-build: $(FNAME).bin
+build: $(FNAME)
 	dd if=$< of=$(DRIVE)
 
 test: $(DRIVE)
