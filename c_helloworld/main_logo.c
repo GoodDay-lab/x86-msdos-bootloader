@@ -1,9 +1,9 @@
-#include "libc/logo.h"
-#include "libc/stdio.h"
+#include "include/stddef.h"
+#include "include/logo.h"
+#include "include/stdio.h"
 
 void main()
 {
-	printf("Bootloader v0.1\n\r");
 	printf("\n");
 	print_logo();
 }

@@ -1,9 +1,11 @@
 DRIVE ?= drive.img
 FNAME = test.bin
-SOURCE = main_drive.o stdio.o drive.o
+SOURCE = main_drive.o libc/stdio.o libc/drive.o
 PYSCRIPT ?= qemutest.py
-CFLAGS ?= -c -g -Os -ffreestanding -Wall -m16 -fno-pie -nostdlib -nostdinc
-LDFLAGS ?=  -T script.ld -static -nmagic -nostdlib -s -L.
+CFLAGS ?= -g -Os -ffreestanding -Wall -m16 -fno-pie -nostdlib -nostdinc
+ASFLAGS ?= $(CFLAGS) -S
+CFLAGS += -c
+LDFLAGS ?=  -T script.ld -static -nmagic -nostdlib -s
 OBJCOPY ?= objcopy
 OBJCOPYFLAGS ?= -O binary
 
@@ -12,9 +14,14 @@ OBJCOPYFLAGS ?= -O binary
 # (just uncomment them) and 'make build'
 ##########################################
 # To build with graphic:
-#SOURCE = main_graphic.o stdio.o draw.o
+#SOURCE = main_graphic.o libc/stdio.o
 # To build with logo:
-#SOURCE = main_logo.o stdio.o logo.o
+#SOURCE = main_logo.o libc/stdio.o libc/logo.o
+# To manage with disk:
+#SOURCE = main_drive.o libc/drive.o libc/stdio.o
+
+%.S: %.c
+	$(CC) $(ASFLAGS) -o $@ $<
 
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ $<

@@ -2,10 +2,12 @@
 
 	I readed this http://un.uobasrah.edu.iq/lectures/8108.pdf. 
 	There's some info about graphic in BIOS and how to draw pixels using bios interrupts.
+	Okay, I can't write a bootloader on C, cause C code is too big for 254 (or smaller) bytes.
 
 ## Issue
 
-No issue! I did it!
+- No issue! I did it!
+- Can't read from drive. (I setted %dl, that a little fix it)
 
 ## Soultion
 
