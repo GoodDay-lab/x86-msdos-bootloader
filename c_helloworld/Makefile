@@ -1,11 +1,12 @@
-DRIVE ?= drive.img
+BOOT_DRIVE ?= drive.img
+DATA_DRIVES ?= second_drive.img
 FNAME = test.bin
 SOURCE = main_drive.o libc/stdio.o libc/drive.o
 PYSCRIPT ?= qemutest.py
-CFLAGS ?= -g -Os -ffreestanding -Wall -m16 -fno-pie -nostdlib -nostdinc
+CFLAGS ?= -g -Os -ffreestanding -Wall -m16 -fno-pie -nostdlib -nostdinc -fno-stack-protector
 ASFLAGS ?= $(CFLAGS) -S
 CFLAGS += -c
-LDFLAGS ?=  -T script.ld -static -nmagic -nostdlib -s
+LDFLAGS ?=  -T script.ld -static -nmagic -nostdlib
 OBJCOPY ?= objcopy
 OBJCOPYFLAGS ?= -O binary
 
@@ -32,14 +33,14 @@ OBJCOPYFLAGS ?= -O binary
 %.bin: %.elf
 	$(OBJCOPY) $(OBJCOPYFLAGS) $< $@
 
-$(DRIVE):
+$(BOOT_DRIVE):
 	dd if=/dev/zero of=$@ bs=512 count=2880
 
-build: $(FNAME) $(DRIVE)
-	dd if=$< of=$(DRIVE)
+build: $(FNAME) $(BOOT_DRIVE)
+	dd if=$< of=$(BOOT_DRIVE)
 
 test: $(DRIVE)
-	python $(PYSCRIPT) $(DRIVE)
+	python $(PYSCRIPT) $(BOOT_DRIVE) $(DATA_DRIVES)
 
 clean:
 	rm -f *.elf *.bin *.o

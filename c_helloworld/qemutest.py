@@ -7,11 +7,12 @@ def check_exists(path):
         print(f"[F] {path} not exists")
         exit(1)
 
-def run_qemu(qemu, order, *drives):
+def run_qemu(qemu, order, drives):
     cmdline = f"{qemu} -boot order={order}"
     for drive in drives:
-        cmdline += f" -drive format=raw,file={fdrive}"
+        cmdline += f" -drive format=raw,file={drive}"
     print("Booting!")
+    print(f"[debug] cmdline = '{cmdline}'")
     os.system(cmdline)
 
 import sys
@@ -20,6 +21,7 @@ fdrive = sys.argv[1]
 qemu = "/bin/qemu-system-x86_64"
 bootorder = "ca"
 
-check_exists(fdrive)
+for disk in sys.argv[1:]:
+    check_exists(disk)
 
-run_qemu(qemu, bootorder, [fdrive])
+run_qemu(qemu, bootorder, sys.argv[1:])

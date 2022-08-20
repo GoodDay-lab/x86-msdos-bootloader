@@ -5,7 +5,7 @@
 #include "stddef.h"
 
 extern void init_drive();  // ptr will point on extension segment
-extern void read_sector(u8, u8, u8, char*, u8, u8*, u8*);  // reads sector to head, cyllinder, sector  (last 2 ptrs are ah and al)
-extern void write_sector(u8, u8, u8, char*, u8, u8*, u8*);  // write sector to head, cyllinder, sector  (last 2 ptrs are ah and al)
+extern void read_sector(u8, u8, u8, u8, char*, u8, u8*, u8*);  // reads sector to head, cyllinder, sector  (last 2 ptrs are ah and al)
+extern void write_sector(u8, u8, u8, u8, char*, u8, u8*, u8*);  // write sector to head, cyllinder, sector  (last 2 ptrs are ah and al)
 
 #endif 
