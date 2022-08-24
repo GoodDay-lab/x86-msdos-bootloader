@@ -22,7 +22,7 @@ void printf(const char *string)
 	if ((*(string - 1)) == '\n') __asm__ __volatile__ ("int $0x10\n" :: "a"(0x0e00 | '\r'), "b"(0x0007));
 }
 
-#ifndef _LOGO_H_
+#ifndef _NO_HEX_STDIO_H_
 /* 
  * Converts 4-bit number into hex:
  * 	[0-15] -> [0-9|A-F]

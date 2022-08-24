@@ -10,6 +10,9 @@ LDFLAGS ?=  -T script.ld -static -nmagic -nostdlib
 OBJCOPY ?= objcopy
 OBJCOPYFLAGS ?= -O binary
 
+# Some functions can take a lot place, so you can off them
+CFLAGS += -D=_NO_HEX_STDIO_H_
+
 ##########################################
 # Sources to build different bootloaders
 # (just uncomment them) and 'make build'

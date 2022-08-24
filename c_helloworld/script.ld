@@ -4,7 +4,21 @@ ENTRY(main)
 SECTIONS
 {
 	. = 0x7c00;
-	.text.startup : AT(0x7c00)
+	.bss :
+	{
+		*(.bss);
+	}
+	.text.jump : AT(0x7c00)
+	{
+		SHORT(0xEB3C);
+		BYTE(0x90);
+	}
+	.info : AT(0x7c03
+	{	
+		*(.info.oem_name);
+		*(.info.bios_param_block.sector_size);
+	}
+	.text.startup : AT(0x7c3E)
 	{
 		*(.text.startup);
 	}
@@ -15,7 +29,6 @@ SECTIONS
 	.data :
 	{
 		*(.data);
-		*(.bss);
 		*(.rodata*);
 	}
 	.sig : AT(0x7DFE)
