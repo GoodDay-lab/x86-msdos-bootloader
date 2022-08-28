@@ -7,7 +7,7 @@
  * | c*N^k + c*N^(k-1) + ... + c*N^(0) | // Where's (c - random number), (N - your system (hex, bin, dec))
  * +-----------------------------------+ 
  */
-char *BUFFER = "0000\n";
+char BUFFER[4];
 
 /*
  * Writes a string.
