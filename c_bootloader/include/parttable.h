@@ -17,15 +17,11 @@ typedef struct {
 	u32 sectors_count;
 } partition;
 
-typedef struct {
-	partition part0;
-	partition part1;
-	partition part2;
-	partition part3;
-} parttable;
+/* source: https://stackoverflow.com/questions/4523497/typedef-fixed-length-array */
+typedef partition parttable[4];
 
-#define PART_TABLE \
-		static const parttable __attribute__((aligned(64))) __attribute__((section(".table"))) __attribute__((used))
+#define PART_TABLE(NAME) \
+		parttable* NAME = (parttable*)0x7dbe
 
 
 #endif

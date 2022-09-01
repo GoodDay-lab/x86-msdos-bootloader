@@ -4,6 +4,7 @@
 #include "stddef.h"
 
 extern void printf(const char *);
+extern void printline(char, u32);
 
 #ifndef _NO_HEX_STDIO_H_
 extern void to_hex_digit(u8, char *);

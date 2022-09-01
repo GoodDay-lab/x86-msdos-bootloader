@@ -7,7 +7,7 @@
  * | c*N^k + c*N^(k-1) + ... + c*N^(0) | // Where's (c - random number), (N - your system (hex, bin, dec))
  * +-----------------------------------+ 
  */
-char BUFFER[4];
+char BUFFER[5] = {0, 0, 0, 0, 0};
 
 /*
  * Writes a string.
@@ -21,6 +21,15 @@ void printf(const char *string)
 	}
 	if ((*(string - 1)) == '\n') __asm__ __volatile__ ("int $0x10\n" :: "a"(0x0e00 | '\r'), "b"(0x0007));
 }
+
+/*
+void printline(char letter, u32 num)
+{
+    for (;num >= 0; num--) {
+        __asm__ __volatile__ ("int $0x10\n" : : "a"(0x0e00 | letter), "b"(0x0007));
+    }
+}
+*/
 
 #ifndef _NO_HEX_STDIO_H_
 /* 
@@ -47,6 +56,7 @@ void to_hex_str(u16 number)
 		to_hex_digit(number % 16, (b+3-i));
 		number /= 16;
 	}
+        b[4] = 0;
 	printf(b);
 }
 #endif

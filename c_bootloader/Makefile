@@ -1,7 +1,7 @@
 BOOT_DRIVE ?= drive.img
 DATA_DRIVES ?= second_drive.img
 FNAME = test.bin
-SOURCE = main_drive.o libc/stdio.o libc/drive.o
+SOURCE = main_drive.o libc/stdio.o #libc/drive.o
 PYSCRIPT ?= qemutest.py
 CFLAGS ?= -g -Os -ffreestanding -Wall -m16 -fno-pie -nostdlib -nostdinc -fno-stack-protector
 ASFLAGS ?= $(CFLAGS) -S
