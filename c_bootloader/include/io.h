@@ -1,7 +1,7 @@
 #ifndef _STDIO_H_
 #define _STDIO_H_
 
-#include "stddef.h"
+#include "def.h"
 
 extern void printf(const char *);
 extern void printline(char, u32);

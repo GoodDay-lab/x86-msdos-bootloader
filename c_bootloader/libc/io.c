@@ -1,4 +1,4 @@
-#include "../include/stdio.h"
+#include "../include/io.h"
 
 /*
  * To converts 16-bit number to hex I use
@@ -7,7 +7,7 @@
  * | c*N^k + c*N^(k-1) + ... + c*N^(0) | // Where's (c - random number), (N - your system (hex, bin, dec))
  * +-----------------------------------+ 
  */
-char BUFFER[5] = {0, 0, 0, 0, 0};
+char BUFFER[5];
 
 /*
  * Writes a string.

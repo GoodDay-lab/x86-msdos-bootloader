@@ -1,22 +1,20 @@
 OUTPUT_FORMAT(elf32-i386)
 OUTPUT_ARCH(i386)
-ENTRY(main)
 SECTIONS
 {
-	.bss : AT(0x7b00) { *(.bss); }
-	.text : AT(0x7c00)
+	.bss : AT(0x7000) { *(.bss); }
+	.text.start : AT(0x7c00)
 	{
-		*(.text.startup);
-		*(.text);
+		*(.text.start);
 	}
+        .text : AT(0x7c3e)
+        {
+                *(.text*);
+        }
 	.data :
 	{
 		*(.data);
 		*(.rodata*);
-	}
-	.table : AT(0x7DBE)
-	{
-		*(.table);
 	}
 	.sig : AT(0x7DFE)
 	{
@@ -27,5 +25,6 @@ SECTIONS
 		*(.comment);
 		*(.note*);
 		*(.eh_frame);
+                *(.debug*);
 	}
 }

@@ -2,7 +2,7 @@
 #ifndef _DRAW_H_
 #define _DRAW_H_
 
-#include "stddef.h"
+#include "def.h"
 
 #define LIGHT 0b1000
 #define RED 0b0100
